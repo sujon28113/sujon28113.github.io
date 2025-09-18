@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Morgan | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #4a6cf7;
+            --secondary: #6f42c1;
+            --dark: #1d2144;
+            --light: #f5f8ff;
+            --gray: #e5e7eb;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 100px;
+            background: linear-gradient(135deg, #f5f8ff 0%, #e2e8f0 100%);
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+        
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .info-item {
+            margin-bottom: 10px;
+        }
+        
+        .info-item span {
+            font-weight: 600;
+            color: var(--dark);
+            min-width: 100px;
+            display: inline-block;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-item i {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .skill-item h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .skill-item p {
+            color: #666;
+        }
+        
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-item:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .project-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .project-tags span {
+            background: var(--gray);
+            color: #555;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .contact-item div {
+            flex: 1;
+        }
+        
+        .contact-item h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .contact-item p {
+            color: #666;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-top: 40px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Alex<span>Portfolio</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm Alex <span>Morgan</span></h1>
+                    <p>I'm a passionate front-end developer and UI/UX designer with 5 years of experience creating engaging digital experiences. I love turning complex problems into simple, beautiful designs.</p>
+                    <a href="#projects" class="btn">View My Work</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Alex Morgan">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="About Alex">
+                </div>
+                <div class="about-text">
+                    <h3>Front-end Developer & UI/UX Designer</h3>
+                    <p>I am a dedicated professional with a passion for creating beautiful, functional websites and applications. With a strong background in both design and development, I bring a unique perspective to every project.</p>
+                    
+                    <div class="info-item">
+                        <span>Name:</span> Alex Morgan
+                    </div>
+                    <div class="info-item">
+                        <span>Email:</span> alex.morgan@example.com
+                    </div>
+                    <div class="info-item">
+                        <span>Age:</span> 29
+                    </div>
+                    <div class="info-item">
+                        <span>From:</span> San Francisco, CA
+                    </div>
+                    
+                    <a href="#" class="btn">Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Skills</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <i class="fas fa-code"></i>
+                    <h3>Web Development</h3>
+                    <p>Building responsive and interactive websites using HTML, CSS, JavaScript, and modern frameworks like React and Vue.</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>UI/UX Design</h3>
+                    <p>Creating intuitive user interfaces and experiences with a focus on usability and aesthetic appeal.</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Responsive Design</h3>
+                    <p>Developing websites that work seamlessly across all devices, from desktops to smartphones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Projects</h2>
+            </div>
+            <div class="projects-container">
+                <div class="project-item">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="E-commerce Website">
+                    </div>
+                    <div class="project-info">
+                        <h3>E-commerce Website</h3>
+                        <p>A fully responsive e-commerce platform with product filtering, cart functionality, and secure checkout.</p>
+                        <div class="project-tags">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Travel App">
+                    </div>
+                    <div class="project-info">
+                        <h3>Travel Planning App</h3>
+                        <p>An application that helps users plan their trips, book accommodations, and discover local attractions.</p>
+                        <div class="project-tags">
+                            <span>Vue.js</span>
+                            <span>Firebase</span>
+                            <span>Google Maps API</span>
+                        </div>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Fitness Tracker">
+                    </div>
+                    <div class="project-info">
+                        <h3>Fitness Tracker</h3>
+                        <p>A web and mobile application that allows users to track their workouts, set goals, and monitor progress.</p>
+                        <div class="project-tags">
+                            <span>React Native</span>
+                            <span>Express</span>
+                            <span>MySQL</span>
+                        </div>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>alex.morgan@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>San Francisco, California</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" placeholder="Enter subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Enter your message"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Alex Morgan</h3>
+                    <p>A front-end developer and UI/UX designer passionate about creating beautiful, functional digital experiences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> alex.morgan@example.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> San Francisco, California</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Alex Morgan. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
