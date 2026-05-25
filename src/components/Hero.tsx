@@ -127,7 +127,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
               <ArrowRight className="w-4 h-4 text-accent-gold" />
             </button>
             <a
-              href="Md_Sujon_Shikder_CV.pdf"
+              href="/Md_Sujon_Shikder_CV.pdf"
               download="Md_Sujon_Shikder_CV.pdf"
               className="flex items-center gap-2 border border-brand-800 text-brand-800 hover:bg-brand-50/50 hover:text-brand-900 font-sans text-xs tracking-widest uppercase font-bold py-3.5 px-6 rounded-sm transition-all duration-200 pointer-events-auto cursor-pointer"
             >
